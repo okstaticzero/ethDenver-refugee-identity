@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router';
+import Accounts from '../accounts/Accounts';
 import './App.css';
 import 'material-design-icons/iconfont/material-icons.css';
 
@@ -28,13 +29,15 @@ export class App extends Component {
       <div className="App">
 
         <div className="App-header">
-          <Nav 
+          <Nav
             newSearchParams={ this.props.newSearchParams }
             redirectUserToSearch={ this.props.redirectUserToSearch } 
-            />
+           />
         </div>
+        
           
-          <Route path="/search" component={ SearchResults } /> 
+        <Route path="/search" component={ SearchResults } /> 
+        <Route exact path="/" component={Accounts} />
       </div>
     );
   }
@@ -45,6 +48,7 @@ App.propTypes = {
   dispatch: PropTypes.func,
   redirectUserToSearch: PropTypes.func,
   getAllRefugees: PropTypes.func,
+  newSearchParams: PropTypes.string,
 };
 
 function mapStateToProps(state) {

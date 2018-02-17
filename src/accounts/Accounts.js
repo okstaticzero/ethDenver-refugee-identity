@@ -8,6 +8,7 @@ import { web3, account } from '../util/web3Util';
 import './Accounts.css';
 import {
     Button,
+    Card
 } from 'react-md';
 import { initAccount } from "../util/Uport";
 
@@ -21,8 +22,8 @@ export class Accounts extends Component {
 
     async handleSubmit(e) {
         e.preventDefault();
-        //let web3 = "uport";
-        let web3 = "standard";
+        let web3 = "uport";
+        //let web3 = "standard";
         if (web3 == "standard") {
             console.log("account: ", account)
             this.props.createAccount(account, { name: "Test Name", avatar: { uri: "" } }, false);
@@ -37,26 +38,30 @@ export class Accounts extends Component {
 
     render() {
         return (
-            <div className="Account-list">
-                <p>This App uses uPort for identity verification and authentication on the Blockchain.
-                    Download the uPort app on your mobile phone to create your identity.
+            <Card className="Account-main">
+                <div className="account-inner">
+                    <h1>Welcome to RefugeID</h1>
+                    <p className="home-text">This App uses uPort for identity verification and authentication on the Blockchain.
+                        Download the uPort app on your mobile phone to create your identity.
                     <a href="https://www.uport.me/" rel="noopener noreferrer" target="_blank">
-                        https://www.uport.me/</a>
-                </p>
-                <br />
-                {this.props.loading ? (
-                    <Loader />
-                ) : (
-                        <form className="login-form" onSubmit={this.handleSubmit}>
-                            <div>
-                                <Button type="submit" raised primary swapTheming>
-                                    Verify your identity
-                                </Button>
-                            </div>
-                        </form>
-                    )
-                }
-            </div>
+                            https://www.uport.me/</a>
+                    </p>
+                    <br />
+                    {this.props.loading ? (
+                        <Loader />
+                    ) : (
+                            <form className="login-form" onSubmit={this.handleSubmit}>
+                                <div>
+
+                                    <Button type="submit" raised primary className="custom-button">
+                                        <p>Log in with uPort</p>
+                                    </Button>
+                                </div>
+                            </form>
+                        )
+                    }
+                </div>
+            </Card>
         )
     }
 }
