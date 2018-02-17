@@ -19,8 +19,9 @@ const sortByString = (array, sortParam = 'firstName') => {
     return newArr;
 };
 
-
 const Nav = props => {
+    //TODO: solve error:
+    // Hash history cannot PUSH the same path; a new entry will not be added to the history stack
     return (
         <div className="nav">
             
@@ -34,11 +35,12 @@ const Nav = props => {
                     className="search-input"
                     label="Search refugee blockchain by id, name or origin.. "
                     type="search"
-                    leftIcon={<FontIcon>search</FontIcon>}
-                    size={150}
+                    leftIcon={<FontIcon className="search-font">search</FontIcon>}
+                    size={50}
                     customSize="searchText"
                     fullWidth={true}
                     onChange={ sortByString }
+                    onFocus={ props.redirectUserToSearch }
                 />
             </div>
         </div>
@@ -46,6 +48,7 @@ const Nav = props => {
 };
 
 Nav.propTypes = {
+    redirectUserToSearch: PropTypes.func,
 };
 
 export default Nav;

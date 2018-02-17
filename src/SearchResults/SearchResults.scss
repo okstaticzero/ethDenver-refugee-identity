@@ -1,0 +1,18 @@
+@import '../variables';
+
+.searchResults {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+
+    .searchResults-wrapper {
+        width: 80%;
+
+        .md-card-title--title.md-card-title--large.md-text {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+    }
+}
