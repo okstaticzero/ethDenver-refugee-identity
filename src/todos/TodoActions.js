@@ -1,7 +1,7 @@
 //import { web3 } from '../util/web3Util';
 import { web3 } from "../util/Uport";
 import * as types from '../store/actionTypes';
-import Todos from '../services/TodosService';
+import Todos from '../services/RefugeeService';
 import { setJSON } from '../util/IPFS'
 import axios from 'axios';
 
