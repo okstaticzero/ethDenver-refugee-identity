@@ -45,11 +45,12 @@ contract RefugeeIdentity is OwnerIdentity {
             eventPersonEdited("Person data edited successfully.", _id);
         } else {
             eventPersonEdited("Error looking up person.", _id);
+            throw;
         }
     }
     
-    function getOnePersonById(uint _id) public view returns(uint, bytes32, bytes32, bytes32, bytes32, bytes32) {
-        if (_id < counter) {
+    function getOnePersonById(uint _id) public  returns(uint, bytes32, bytes32, bytes32, bytes32, bytes32) {
+        if (counter > _id) {
             Person memory currentPerson = people[_id]; 
             return (currentPerson.id, currentPerson.fullName, currentPerson.origin, currentPerson.organization, currentPerson.ipfsFirst, currentPerson.ipfsSecond);
         } else {
@@ -59,6 +60,8 @@ contract RefugeeIdentity is OwnerIdentity {
     }
     
     function getAll() public view returns(uint[], bytes32[], bytes32[], bytes32[], bytes32[], bytes32[]) {
+        
+        
         uint[] memory ids = new uint[](counter);
         bytes32[] memory names = new bytes32[](counter);
         bytes32[] memory origins = new bytes32[](counter);
@@ -85,6 +88,10 @@ contract RefugeeIdentity is OwnerIdentity {
         } else {
             eventtransferIdentityOwnership("Error when trying to transfer identity owenership", _id);
         }
+    }
+    
+    function getCount() public view returns (uint){
+        return counter;
     }
     
 }
