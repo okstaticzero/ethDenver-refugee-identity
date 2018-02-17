@@ -4,6 +4,22 @@ import { Toolbar, TextField, FontIcon } from 'react-md';
 
 import './Nav.css';
 
+const sortByString = (array, sortParam = 'firstName') => {
+    const newArr = [...array].sort(function (a, b) {
+        var nameA = a[sortParam].toUpperCase(); // ignore upper and lowercase
+        var nameB = b[sortParam].toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+    return newArr;
+};
+
+
 const Nav = props => {
     return (
         <div className="nav">
@@ -22,7 +38,7 @@ const Nav = props => {
                     size={150}
                     customSize="searchText"
                     fullWidth={true}
-                    onChange={() => {}}
+                    onChange={ sortByString }
                 />
             </div>
         </div>
