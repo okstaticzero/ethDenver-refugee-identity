@@ -4,8 +4,6 @@ import { web3 } from '../util/web3Util';
 import contract from 'truffle-contract';
 import Refugee from '../ethereum/build/contracts/RefugeeIdentity.json';
 
-
-
 const RefugeeContract = contract(Refugee);
 
 RefugeeContract.setProvider(web3.currentProvider);
