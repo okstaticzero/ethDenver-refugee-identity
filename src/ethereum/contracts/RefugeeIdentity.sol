@@ -19,6 +19,11 @@ contract RefugeeIdentity is OwnerIdentity {
        uint id;
        bool exists;
    }
+
+   event eventPersonAdded(string, uint);
+   event eventPersonEdited(string, uint);
+   event eventGetPerson(string, uint);
+   event eventtransferIdentityOwnership(string, uint);
    
     mapping(uint => Person) people;
     
@@ -31,17 +36,26 @@ contract RefugeeIdentity is OwnerIdentity {
     
     function addPerson(bytes32 _fullName, bytes32 _origin, bytes32 _organization, bytes32 _ipfs1, bytes32 _ipfs2) public _adminOnly() payable {
         people[counter] = Person(counter, _fullName, _origin, _organization, _ipfs1, _ipfs2);
-        counter++;
+        eventPersonAdded("New person added successfully.", ++counter);
     }
     
      function editPerson(uint _id, bytes32 _fullName, bytes32 _origin, bytes32 _organization, bytes32 _ipfs1, bytes32 _ipfs2) public  payable {
-        require(peopleWithUport[msg.sender].exists || admins[msg.sender]);
-        people[_id] = Person(_id, _fullName, _origin, _organization, _ipfs1, _ipfs2);
+        if ((peopleWithUport[msg.sender].exists || admins[msg.sender]) && counter < _id) {
+            people[_id] = Person(_id, _fullName, _origin, _organization, _ipfs1, _ipfs2);
+            eventPersonEdited("Person data edited successfully.", _id);
+        } else {
+            eventPersonEdited("Error looking up person.", _id);
+        }
     }
     
     function getOnePersonById(uint _id) public view returns(uint, bytes32, bytes32, bytes32, bytes32, bytes32) {
-        Person memory currentPerson = people[_id]; 
-        return (currentPerson.id, currentPerson.fullName, currentPerson.origin, currentPerson.organization, currentPerson.ipfsFirst, currentPerson.ipfsSecond);
+        if (_id < counter) {
+            Person memory currentPerson = people[_id]; 
+            return (currentPerson.id, currentPerson.fullName, currentPerson.origin, currentPerson.organization, currentPerson.ipfsFirst, currentPerson.ipfsSecond);
+        } else {
+            eventGetPerson("Invalid ID used for lookup", _id);
+            throw;
+        }
     }
     
     function getAll() public view returns(uint[], bytes32[], bytes32[], bytes32[], bytes32[], bytes32[]) {
@@ -65,7 +79,12 @@ contract RefugeeIdentity is OwnerIdentity {
     }
     
     function transferIdentityOwnership(address _address, uint _id) public payable _adminOnly() _ownerDoenstExist(_address) returns(bool) {
-      peopleWithUport[_address] = PersonWithUport(_id, true);
+        if (_id < counter) {
+            peopleWithUport[_address] = PersonWithUport(_id, true);
+            eventtransferIdentityOwnership("Identity owenership transfered", _id);
+        } else {
+            eventtransferIdentityOwnership("Error when trying to transfer identity owenership", _id);
+        }
     }
     
 }
