@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Toolbar, TextField, FontIcon } from 'react-md';
-
+import { NavLink } from 'react-router-dom';
 import './Nav.css';
 
 const sortByString = (array, sortParam = 'firstName') => {
@@ -26,7 +26,7 @@ const Nav = props => {
         <div className="nav">
             
             <div className="title-wrapper">
-                <Toolbar title="RefugeID" />
+                <NavLink to="/"><h2>RefugeID</h2></NavLink>
             </div>
 
             <div className="input-wrapper">
