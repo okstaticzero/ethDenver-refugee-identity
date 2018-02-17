@@ -1,6 +1,6 @@
 //switch web3 type below
-import { web3 } from '../util/web3Util';
-//import { web3 } from "../util/Uport";
+//import { web3 } from '../util/web3Util';
+import { web3 } from "../util/Uport";
 import contract from 'truffle-contract';
 import Todo from '../ethereum/build/contracts/TodoList.json';
 
