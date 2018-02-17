@@ -1,5 +1,5 @@
 import * as types from '../store/actionTypes';
-import Todos from '../services/TodosService';
+import Todos from '../services/RefugeeService';
 import { push } from "react-router-redux";
 
 export const usersSuccess = data => {

@@ -24,8 +24,8 @@ contract RefugeeIdentity is OwnerIdentity {
     
     mapping(address => PersonWithUport) peopleWithUport;
     
-    modifier _ownerAlreadyExist(address _address)  {
-        require(peopleWithUport[_address].exists);
+    modifier _ownerDoenstExist(address _address)  {
+        require(!peopleWithUport[_address].exists);
         _;
     }
     
@@ -34,7 +34,8 @@ contract RefugeeIdentity is OwnerIdentity {
         counter++;
     }
     
-     function editPerson(uint _id, bytes32 _fullName, bytes32 _origin, bytes32 _organization, bytes32 _ipfs1, bytes32 _ipfs2) public _adminOnly() payable {
+     function editPerson(uint _id, bytes32 _fullName, bytes32 _origin, bytes32 _organization, bytes32 _ipfs1, bytes32 _ipfs2) public  payable {
+        require(peopleWithUport[msg.sender].exists || admins[msg.sender]);
         people[_id] = Person(_id, _fullName, _origin, _organization, _ipfs1, _ipfs2);
     }
     
@@ -63,7 +64,7 @@ contract RefugeeIdentity is OwnerIdentity {
         return (ids, names, origins, organizations, ipfsOne, ipfsTwo);
     }
     
-    function transferIdentityOwnership(address _address, uint _id) public payable _adminOnly() _ownerAlreadyExist(_address) returns(bool) {
+    function transferIdentityOwnership(address _address, uint _id) public payable _adminOnly() _ownerDoenstExist(_address) returns(bool) {
       peopleWithUport[_address] = PersonWithUport(_id, true);
     }
     
