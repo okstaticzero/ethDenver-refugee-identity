@@ -6,11 +6,13 @@ import { Route } from 'react-router';
 import './App.css';
 import 'material-design-icons/iconfont/material-icons.css';
 
-import Nav from '../nav';
-import SearchResults from '../SearchResults';
-import Profile from '../Profile';
-
+import Nav from '../Nav/Nav';
+// import SearchResults from '../SearchResults';
+// import ProfileContainer from '../ProfileContainer';
+{/* <Route path="/search" component={SearchResults} /> */}
+  // <Route path="/profile/:id" component={ProfileContainer} />
 export class App extends Component {
+  
   render() {
 
     return (
@@ -18,15 +20,14 @@ export class App extends Component {
         <div className="App-header">
             <Nav />
         </div>
-        <Route path="/searchresult" component={SearchResults} />
-        <Route path="/profile/:id" component={Profile} />
+        
       </div>
     );
   }
+
 }
 
 App.propTypes = {
-  fetchTodos: PropTypes.func,
   dispatch: PropTypes.func
 };
 
