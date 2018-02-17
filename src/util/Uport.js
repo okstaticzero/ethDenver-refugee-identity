@@ -19,6 +19,15 @@ const initAccount = async () => {
     return { specificNetworkAddress, userProfile }
 }
 
+
+const initRefugeeAccount = async () => {
+    const userProfile = await uport.requestCredentials({
+        requested: ['name', 'country', 'avatar'],
+        notifications: true // We want this if we want to recieve credentials
+    })
+    //have addresss
+}
+
 const web3 = uport.getWeb3()
 export { web3, uport, MNID, initAccount }
 // Attest specific credentials

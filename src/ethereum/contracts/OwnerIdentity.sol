@@ -9,7 +9,7 @@ contract OwnerIdentity {
    
     address _owner;
     
-    mapping(address => bool) private admins;
+    mapping(address => bool) internal admins;
     
     modifier _adminOnly() {
         require(admins[msg.sender]);
