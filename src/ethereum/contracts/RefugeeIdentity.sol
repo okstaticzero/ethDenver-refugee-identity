@@ -90,7 +90,7 @@ contract RefugeeIdentity is OwnerIdentity {
         }
     }
     
-    function getCount() public view returns (uint){
+    function getCount() public view returns (uint) {
         return counter;
     }
     
