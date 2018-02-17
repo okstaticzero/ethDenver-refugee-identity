@@ -1,7 +1,25 @@
 @import "../variables";
 
 .nav {
-    h2 {
-        color: $white;
+    .title-wrapper {
+        background-color: $black;
+        width: 100%;
+        h2 {
+            color: $white;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
     }
+
+    .input-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .search-input {
+            background-color: $white;
+            width: 80%;
+        }
+    }
+ 
 }
