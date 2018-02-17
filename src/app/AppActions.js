@@ -23,3 +23,10 @@ export function getAllRefugeesSucess(data) {
         payload: data
     }
 }
+
+export function newSearchParams(params) {
+    return {
+        type: types.SEARCH_PARAMS,
+        payload: params
+    }
+}

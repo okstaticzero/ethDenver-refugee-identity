@@ -7,7 +7,7 @@ import './App.css';
 import 'material-design-icons/iconfont/material-icons.css';
 
 import Nav from '../Nav/Nav';
-import { redirectUserToSearch, getAllRefugees } from './AppActions.js';
+import { redirectUserToSearch, getAllRefugees, newSearchParams } from './AppActions.js';
 
 import SearchResults from '../SearchResults/SearchResults';
 // import ProfileContainer from '../ProfileContainer';
@@ -29,6 +29,7 @@ export class App extends Component {
 
         <div className="App-header">
           <Nav 
+            newSearchParams={ this.props.newSearchParams }
             redirectUserToSearch={ this.props.redirectUserToSearch } 
             />
         </div>
@@ -54,5 +55,6 @@ function mapStateToProps(state) {
 
 export default withRouter(connect(mapStateToProps, { 
     redirectUserToSearch, 
-    getAllRefugees 
+    getAllRefugees,
+    newSearchParams 
   })(App));

@@ -1,23 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Toolbar, TextField, FontIcon } from 'react-md';
+import { TextField, FontIcon } from 'react-md';
 import { NavLink } from 'react-router-dom';
 import './Nav.css';
-
-const sortByString = (array, sortParam = 'firstName') => {
-    const newArr = [...array].sort(function (a, b) {
-        var nameA = a[sortParam].toUpperCase(); // ignore upper and lowercase
-        var nameB = b[sortParam].toUpperCase(); // ignore upper and lowercase
-        if (nameA < nameB) {
-            return -1;
-        }
-        if (nameA > nameB) {
-            return 1;
-        }
-        return 0;
-    });
-    return newArr;
-};
 
 const Nav = props => {
     //TODO: solve error:
@@ -39,7 +24,7 @@ const Nav = props => {
                     size={50}
                     customSize="searchText"
                     fullWidth={true}
-                    onChange={ sortByString }
+                    onChange={ value => props.newSearchParams(value) }
                     onFocus={ props.redirectUserToSearch }
                 />
             </div>

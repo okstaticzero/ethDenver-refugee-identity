@@ -8,3 +8,4 @@ export const USERS_SUCCESS = "USERS_SUCCESS";
 export const ACCOUNT_SUCCESS = "ACCOUNT_SUCCESS";
 
 export const ALL_REFUGEE = "ALL_REFUGEE";
+export const SEARCH_PARAMS = "SEARCH_PARAMS";
