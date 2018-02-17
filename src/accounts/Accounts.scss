@@ -1,0 +1,28 @@
+.Account-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.Accounts-card{
+  padding: 20px
+}
+.login-form{
+  display: block;
+}
+.preloader{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 100px;
+    p{
+      margin-bottom: 0;
+    }
+  }
+
+  .account-link{
+    display: block;
+  }

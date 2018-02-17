@@ -1,0 +1,18 @@
+{
+  "plugins": ["babel", "react"],
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+
+    "ecmaFeatures": {
+      "jsx": true,
+      "jsx-no-bind": false,
+      "modules": true,
+      "experimentalObjectRestSpread": true,
+      "arrowFunctions": true
+    }
+  },
+  "rules": {
+    "react/prop-types": 1
+  }
+}
