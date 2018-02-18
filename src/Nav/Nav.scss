@@ -1,43 +1,46 @@
 @import "../variables";
-
+.ref_logo {
+  width: 110px;
+  margin-left: 20px;
+  margin-top: 17px;
+}
 .nav {
-    .title-wrapper {
-        background-color: $black;
-        width: 100%;
-        height: 12vh;
-        
-        a {
-            text-decoration: none;
-        }
+  .title-wrapper {
+    background-color: $black;
+    width: 100%;
+    height: 12vh;
 
-        h2 {
-            color: $white;
-            font-weight: bold;
-            letter-spacing: 2px;
-            padding-left: 30px;
-            padding-top: 2vh;
-        }
+    a {
+      text-decoration: none;
     }
 
-    .input-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        background-color: $white;
-        
-        .search-font {
-            color: $green;
-            font-size: 35px;
-            margin-bottom: -5px;
-        }
-        .search-input {
-            background-color: $white;
-            width: 80%;
-            padding-bottom: 7vh;
-            .md-divider {
-                display: none;
-            }
-        }
+    h2 {
+      color: $white;
+      font-weight: bold;
+      letter-spacing: 2px;
+      padding-left: 30px;
+      padding-top: 2vh;
     }
- 
+  }
+
+  .input-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: $white;
+
+    .search-font {
+      color: $green;
+      font-size: 35px;
+      margin-bottom: -5px;
+    }
+    .search-input {
+      background-color: $white;
+      width: 80%;
+      padding-bottom: 7vh;
+      .md-divider {
+        display: none;
+      }
+    }
+  }
 }

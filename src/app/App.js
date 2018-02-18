@@ -9,33 +9,35 @@ import NewUserContainer from '../NewUser/NewUser';
 import './App.css';
 import 'material-design-icons/iconfont/material-icons.css';
 
-import Nav from '../Nav/Nav';
-import { redirectUserToSearch, getAllRefugees, newSearchParams } from './AppActions.js';
+import Nav from "../Nav/Nav";
+import {
+  redirectUserToSearch,
+  getAllRefugees,
+  newSearchParams
+} from "./AppActions.js";
 
 import SearchResults from '../SearchResults/SearchResults';
 import ProfileContainer from '../ProfileContainer/ProfileContainer';
 
 export class App extends Component {
-    constructor(props) {
-      super(props);
-    }
-  
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.props.getAllRefugees();
   }
 
   render() {
-
     return (
       <div className="App">
-
         <div className="App-header">
           <Nav
-            newSearchParams={ this.props.newSearchParams }
-            redirectUserToSearch={ this.props.redirectUserToSearch } 
-           />
+            newSearchParams={this.props.newSearchParams}
+            redirectUserToSearch={this.props.redirectUserToSearch}
+          />
         </div>
-        
+
         <Route exact path="/" component={Accounts} />
         <Route path="/search" component={ SearchResults } /> 
         <Route path="/addnew" component={NewUserContainer} />
@@ -43,7 +45,6 @@ export class App extends Component {
       </div>
     );
   }
-
 }
 
 App.propTypes = {
@@ -55,12 +56,14 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    allRefugees: state.app.allRefugees,
+    allRefugees: state.app.allRefugees
   };
 }
 
-export default withRouter(connect(mapStateToProps, { 
-    redirectUserToSearch, 
+export default withRouter(
+  connect(mapStateToProps, {
+    redirectUserToSearch,
     getAllRefugees,
-    newSearchParams 
-  })(App));
+    newSearchParams
+  })(App)
+);
