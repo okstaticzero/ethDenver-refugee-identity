@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router';
 import Accounts from '../accounts/Accounts';
-import AddNew from '../addNew/AddNew';
+import NewUserContainer from '../NewUser/NewUser';
+
 import './App.css';
 import 'material-design-icons/iconfont/material-icons.css';
 
@@ -12,9 +13,8 @@ import Nav from '../Nav/Nav';
 import { redirectUserToSearch, getAllRefugees, newSearchParams } from './AppActions.js';
 
 import SearchResults from '../SearchResults/SearchResults';
-// import ProfileContainer from '../ProfileContainer';
+import { ProfileContainer } from '../ProfileContainer/ProfileContainer';
 
-  // <Route path="/profile/:id" component={ProfileContainer} />
 export class App extends Component {
     constructor(props) {
       super(props);
@@ -36,10 +36,10 @@ export class App extends Component {
            />
         </div>
         
-          
-        <Route path="/search" component={ SearchResults } /> 
         <Route exact path="/" component={Accounts} />
-        <Route path="/addnew" component={AddNew} />
+        <Route path="/search" component={ SearchResults } /> 
+        <Route path="/addnew" component={NewUserContainer} />
+        <Route path="/profile/:id" component={ProfileContainer} />
       </div>
     );
   }
@@ -50,7 +50,7 @@ App.propTypes = {
   dispatch: PropTypes.func,
   redirectUserToSearch: PropTypes.func,
   getAllRefugees: PropTypes.func,
-  newSearchParams: PropTypes.string,
+  newSearchParams: PropTypes.func,
 };
 
 function mapStateToProps(state) {

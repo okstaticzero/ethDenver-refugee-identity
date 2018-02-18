@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import AddNew from "../AddNew/AddNew";
 
-export class ProfileContainer extends Component {
-    
+export class NewUserContainer extends Component {
+
     componentDidMount() {
         // this.props.getEmployeeDetails(this.props.match.params.id);
     }
@@ -24,7 +24,7 @@ export class ProfileContainer extends Component {
     }
 }
 
-ProfileContainer.propTypes = {
+NewUserContainer.propTypes = {
     match: PropTypes.object,
     dispatch: PropTypes.func,
 };
@@ -33,4 +33,4 @@ const mapStateToProps = state => ({
     // user: state.auth.userView,
 });
 
-export default connect(mapStateToProps)(ProfileContainer);
+export default connect(mapStateToProps)(NewUserContainer);

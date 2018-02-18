@@ -14,6 +14,7 @@ import {
   SelectionControl,
   FileInput
 } from "react-md";
+
 const ipfsAPI = require("ipfs-api");
 
 export class AddNew extends Component {
@@ -243,21 +244,13 @@ export class AddNew extends Component {
 }
 
 AddNew.propTypes = {
-  showAddEmployeeModal: PropTypes.bool,
-  hideModal: PropTypes.func,
   userObj: PropTypes.object,
   onSubmit: PropTypes.func,
-  header: PropTypes.string,
-  submitButtonTitle: PropTypes.string,
-  locationList: PropTypes.array,
-  departmentList: PropTypes.array,
   addPerson: PropTypes.func
 };
 
 AddNew.defaultProps = {
   userObj: {
-    isAdmin: false,
-    isManager: false,
     firstName: "",
     lastName: ""
   }

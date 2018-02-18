@@ -20,9 +20,8 @@ export class SearchResults extends Component {
                 return dataItem
             } 
             }).map((person, index) => {
-                return <NavLink to={`/profile/${person.id}`}>
-                        <Card 
-                            key={index} 
+                return <NavLink to={`/profile/${person.id}`} key={index}>
+                        <Card  
                             className="list-items">
                             <CardTitle title={person.name} subtitle={person.origin} />
                         </Card>
