@@ -54,35 +54,8 @@ SearchResults.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        // allRefugees: state.app.allRefugees,
+        allRefugees: state.app.allRefugees,
         searchParams: state.app.searchParams,
-        allRefugees: [{
-            id: 1,
-            name: "bud aminof",
-            origin: "israel"
-        },
-            {
-                name: "kiersten cohen",
-                id: 2,
-                origin: "colorado boulder"
-            },
-            {
-                name: "matt wallce",
-                id: 3,
-                origin: "aman joran"
-            },
-            {
-                name: "neeraj engineer",
-                id: 4,
-                origin: "india puna"
-            },
-            {
-                name: "nahar anin",
-                id: 5,
-                origin: "slovania city"
-            }
-
-    ],
     };
 }
 

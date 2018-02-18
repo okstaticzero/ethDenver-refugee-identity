@@ -13,7 +13,7 @@ import Nav from '../Nav/Nav';
 import { redirectUserToSearch, getAllRefugees, newSearchParams } from './AppActions.js';
 
 import SearchResults from '../SearchResults/SearchResults';
-import { ProfileContainer } from '../ProfileContainer/ProfileContainer';
+import ProfileContainer from '../ProfileContainer/ProfileContainer';
 
 export class App extends Component {
     constructor(props) {
@@ -25,7 +25,7 @@ export class App extends Component {
   }
 
   render() {
-  
+
     return (
       <div className="App">
 

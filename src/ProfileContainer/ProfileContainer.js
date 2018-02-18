@@ -2,23 +2,23 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import AddNew from "../AddNew/AddNew";
+import { profileView } from "./ProfileActions.js"
 
 export class ProfileContainer extends Component {
-    
-    componentDidMount() {
-        // this.props.getEmployeeDetails(this.props.match.params.id);
+    constructor(props) {
+        super(props);
     }
 
-    componentWillReceiveProps(nextProps) {
-        // if (this.props.match.params.id !== nextProps.match.params.id) {
-        //     this.props.getEmployeeDetails(nextProps.match.params.id);
-        // }
+    componentDidMount() {
+        this.props.profileView(this.props.match.params);
     }
 
     render() {
+        if (!this.props.user) return <h2>LOADING</h2>
         return (
             <AddNew
-                {...this.props}
+                disabelForm={ true }
+                viewUser={ this.props.user }
             />
         );
     }
@@ -27,10 +27,12 @@ export class ProfileContainer extends Component {
 ProfileContainer.propTypes = {
     match: PropTypes.object,
     dispatch: PropTypes.func,
+    profileView: PropTypes.func,
+    user: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
-    // user: state.auth.userView,
+    user: state.app.userProfile,
 });
 
-export default connect(mapStateToProps)(ProfileContainer);
+export default connect(mapStateToProps, { profileView })(ProfileContainer);

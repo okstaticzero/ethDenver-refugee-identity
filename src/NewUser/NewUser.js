@@ -5,20 +5,10 @@ import AddNew from "../AddNew/AddNew";
 
 export class NewUserContainer extends Component {
 
-    componentDidMount() {
-        // this.props.getEmployeeDetails(this.props.match.params.id);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        // if (this.props.match.params.id !== nextProps.match.params.id) {
-        //     this.props.getEmployeeDetails(nextProps.match.params.id);
-        // }
-    }
-
     render() {
         return (
             <AddNew
-                {...this.props}
+               disabelForm = { false }
             />
         );
     }
@@ -29,8 +19,4 @@ NewUserContainer.propTypes = {
     dispatch: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-    // user: state.auth.userView,
-});
-
-export default connect(mapStateToProps)(NewUserContainer);
+export default connect(null)(NewUserContainer);
