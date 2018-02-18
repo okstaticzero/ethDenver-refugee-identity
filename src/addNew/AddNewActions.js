@@ -2,6 +2,7 @@ import * as types from "../store/actionTypes";
 import Refugee from "../services/RefugeeService";
 import { setJSON } from "../util/IPFS";
 import { showPreloader } from "../app/AppActions";
+import { attestRefugee } from "../util/Uport";
 
 export const usersSuccess = data => {
   return {
@@ -63,15 +64,21 @@ export const addPerson = refObj => {
 };
 
 export function transferIdentity(adminAddress, refugeeAddress, id) {
-  console.log("******",adminAddress, refugeeAddress, id)
+  console.log("******", adminAddress, refugeeAddress, id);
   return async dispatch => {
     try {
-      let transfer = await Refugee.transferIdentityOwnership(adminAddress, refugeeAddress, id);
-      dispatch(transferIdentitySuccess(transfer))
+      let transfer = await Refugee.transferIdentityOwnership(
+        adminAddress,
+        refugeeAddress,
+        id
+      );
+      dispatch(transferIdentitySuccess(transfer));
+      //attest
+      attestRefugee();
     } catch (err) {
       console.log("ERROR:", err);
     }
-  }
+  };
 }
 
 export function transferIdentitySuccess(payload) {
@@ -79,12 +86,12 @@ export function transferIdentitySuccess(payload) {
   return {
     type: types.TRANSFER_SUCCESS,
     payload: true
-  }
+  };
 }
 
 export function closePopup() {
   return {
     type: types.CLOSE_POPUP,
     payload: false
-  }
+  };
 }
