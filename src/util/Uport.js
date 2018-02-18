@@ -1,6 +1,5 @@
 import { Connect, SimpleSigner, MNID } from "uport-connect";
 
-
 const uport = new Connect("RefugeID", {
   clientId: "2oy45hJBBvH3oGNcK6Hq9681un46EvtfRSD",
   network: "rinkeby",
@@ -38,6 +37,16 @@ export const initRefugeeAccount = async () => {
   const specificNetworkAddress = decodedId.address; //this is the users account  address
   console.log("refugee", specificNetworkAddress);
   return specificNetworkAddress;
+};
+
+export const attestRefugee = async () => {
+  uport2.attestCredentials({
+    sub: "THE_RECEIVING_UPORT_ADDRESS",
+    claim: {
+      RegugeIDAccess: true
+    },
+    exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000 // 30 days from now
+  });
 };
 
 const web3 = uport.getWeb3();

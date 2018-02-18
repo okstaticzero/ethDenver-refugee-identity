@@ -1,4 +1,4 @@
-@import '../variables';
+@import "../variables";
 
 .addnew-wrapper {
   width: 80%;
@@ -40,19 +40,19 @@ input[type="text"] {
 }
 
 .md-floating-label.md-floating-label--floating {
-        color: $light-grey;
-        font-size: 14px;
-      }
+  color: $light-grey;
+  font-size: 14px;
+}
 
 .md-text-field-container--disabled {
-      .md-divider {
-        display: none;
-        background: none;
-      }
-      .md-floating-label.md-floating-label--floating {
-        color: $light-grey;
-      }
-    }
+  .md-divider {
+    display: none;
+    background: none;
+  }
+  .md-floating-label.md-floating-label--floating {
+    color: $light-grey;
+  }
+}
 
 // SECCUESS POPUP
 .md-dialog-container.md-overlay.md-pointer--hover.md-overlay--active {
@@ -62,24 +62,17 @@ input[type="text"] {
 #success {
   width: 720px;
   height: 244px;
-  
+
   img {
     height: 72px;
   }
-  
+
   h1 {
     color: $green;
   }
 
   p {
     font-size: 21px;
-    color: $light-grey;  
+    color: $light-grey;
   }
-}
-
-@media only screen and (max-width: 500px) {
-  .addnew-wrapper {
-    .md-grid{
-      // fix width on mobile
-    }
 }
