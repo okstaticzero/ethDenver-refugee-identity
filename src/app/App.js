@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router';
 import Accounts from '../accounts/Accounts';
+import AddNew from '../addNew/AddNew';
 import './App.css';
 import 'material-design-icons/iconfont/material-icons.css';
 
@@ -22,6 +23,7 @@ export class App extends Component {
           <Nav />
         </div>
         <Route exact path="/" component={Accounts} />
+        <Route path="/addnew" component={AddNew} />
       </div>
     );
   }
