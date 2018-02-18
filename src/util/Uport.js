@@ -1,10 +1,10 @@
 import { Connect, SimpleSigner, MNID } from "uport-connect";
 
-const uport = new Connect("RefugeID", {
-  clientId: "2oxQ33MUXYP6w3uYAzPyGWpRnZjhTfwUFEy",
+const uport = new Connect("EthDenver Refugee Identity", {
+  clientId: "2oxgbuGDiahQB52K2iu1QWKA6KdVXtmrfoe",
   network: "rinkeby",
   signer: SimpleSigner(
-    "676b366dd903fe7d09ed6f30771515035ccb2c280abd52b63f43aed308d5c23c"
+    "62388533966a25b565f5614547a56d51754eabf216d9e9a7405391b571c9a97f"
   )
 });
 
