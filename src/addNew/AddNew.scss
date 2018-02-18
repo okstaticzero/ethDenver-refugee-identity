@@ -1,3 +1,5 @@
+@import '../variables';
+
 .addnew-wrapper {
   width: 80%;
   margin: 0 auto;
@@ -25,3 +27,13 @@
     font-size: 12px;
   }
 }
+
+.md-text-field-container--disabled {
+      .md-divider {
+        display: none;
+        background: none;
+      }
+      .md-floating-label.md-floating-label--floating {
+        color: $black;
+      }
+    }
