@@ -5,7 +5,11 @@ import AddNew from "../AddNew/AddNew";
 
 export class NewUserContainer extends Component {
   render() {
-    return <AddNew disabelForm={false} title={"Add New Refugee"} />;
+    return <AddNew 
+      disabelForm={false} 
+      title={"Add New Refugee"}
+      viewUser= { {} }
+      />;
   }
 }
 

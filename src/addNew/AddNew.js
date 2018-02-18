@@ -14,6 +14,8 @@ import {
   CardTitle
 } from "react-md";
 
+import {transfer} from '../util/Uport';
+
 const ipfsAPI = require("ipfs-api");
 
 export class AddNew extends Component {
@@ -83,8 +85,14 @@ export class AddNew extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let data = this.state;
-    this.props.addPerson(data);
+    if (this.props.disabelForm) {
+      let test = transfer();
+      console.log("*************************")
+      console.log(test)
+    } else {
+      let data = this.state;
+      this.props.addPerson(data);
+    }
   }
 
   render() {
@@ -224,7 +232,7 @@ export class AddNew extends Component {
                       primary
                       className="custom-button addnew-btn"
                       id="transferIdentity"
-                      type="submit" >
+                      type="submit">
                     <p>Transfer Identity</p>
                   </Button>
                }
@@ -267,6 +275,7 @@ AddNew.propTypes = {
   addPerson: PropTypes.func,
   loading: PropTypes.bool,
   title: PropTypes.string,
+  disabelForm: PropTypes.bool,
 };
 
 function mapStateToProps(state) {

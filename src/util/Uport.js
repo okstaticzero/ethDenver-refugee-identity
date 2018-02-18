@@ -1,6 +1,6 @@
 import { Connect, SimpleSigner, MNID } from "uport-connect";
 
-const uport = new Connect("Todo DApp", {
+const uport = new Connect("RefugeID", {
   clientId: "2oxQ33MUXYP6w3uYAzPyGWpRnZjhTfwUFEy",
   network: "rinkeby",
   signer: SimpleSigner(
@@ -21,7 +21,7 @@ const initAccount = async () => {
   return { specificNetworkAddress, userProfile };
 };
 
-const transfer = async () => {
+export const transfer = async () => {
   const userProfile = await uport.requestCredentials({
     requested: ["name", "country", "avatar"],
     notifications: true // We want this if we want to recieve credentials
