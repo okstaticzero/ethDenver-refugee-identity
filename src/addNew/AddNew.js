@@ -7,13 +7,13 @@ import "./AddNew.css";
 import {
   Button,
   Card,
-  SelectField,
   TextField,
   Cell,
   Grid,
-  SelectionControl,
-  FileInput
+  FileInput,
+  CardTitle
 } from "react-md";
+
 const ipfsAPI = require("ipfs-api");
 
 export class AddNew extends Component {
@@ -93,6 +93,9 @@ export class AddNew extends Component {
         <Grid>
           <Cell size={9}>
             <Card className="card-left">
+              <CardTitle
+                className="add-new-refugee-title"
+                title={this.props.title} />
               <form
                 id="add-employee-form"
                 onSubmit={this.handleSubmit}
@@ -110,6 +113,7 @@ export class AddNew extends Component {
                       value={this.state.name}
                       required
                       className="md-cell md-cell--12"
+                      disabled={this.props.disabelForm}
                     />
 
                     <TextField
@@ -122,6 +126,7 @@ export class AddNew extends Component {
                       value={this.state.gender}
                       className="md-cell md-cell--12"
                       required
+                      disabled={this.props.disabelForm}
                     />
                     <TextField
                       id="origin"
@@ -133,6 +138,7 @@ export class AddNew extends Component {
                       value={this.state.origin}
                       className="md-cell md-cell--12"
                       required
+                      disabled={this.props.disabelForm}
                     />
                     <TextField
                       id="phonenumber"
@@ -144,6 +150,7 @@ export class AddNew extends Component {
                       value={this.state.phonenumber}
                       className="md-cell md-cell--12"
                       required
+                      disabled={this.props.disabelForm}
                     />
                   </Cell>
                   <Cell size={6}>
@@ -157,6 +164,7 @@ export class AddNew extends Component {
                       value={this.state.birthday}
                       className="md-cell md-cell--12"
                       required
+                      disabled={this.props.disabelForm}
                     />
                     <TextField
                       id="organization"
@@ -168,6 +176,7 @@ export class AddNew extends Component {
                       value={this.state.organization}
                       className="md-cell md-cell--12"
                       required
+                      disabled={this.props.disabelForm}
                     />
                     <TextField
                       id="currentLocation"
@@ -181,6 +190,7 @@ export class AddNew extends Component {
                       value={this.state.currentLocation}
                       className="md-cell md-cell--12"
                       required
+                      disabled={this.props.disabelForm}
                     />
                     <TextField
                       id="email"
@@ -193,6 +203,7 @@ export class AddNew extends Component {
                       className="md-cell md-cell--12"
                       errorText="Email is required."
                       required
+                      disabled={this.props.disabelForm}
                     />
                   </Cell>
                 </Grid>
@@ -202,7 +213,7 @@ export class AddNew extends Component {
                   primary
                   className="custom-button addnew-btn"
                   id="submit"
-                  // disabled={!this.formValid()}
+                  disabled={ this.props.disabelForm }
                   type="submit"
                 >
                   <p>Add to database</p>
@@ -241,21 +252,15 @@ export class AddNew extends Component {
 }
 
 AddNew.propTypes = {
-  showAddEmployeeModal: PropTypes.bool,
-  hideModal: PropTypes.func,
   userObj: PropTypes.object,
   onSubmit: PropTypes.func,
-  header: PropTypes.string,
-  submitButtonTitle: PropTypes.string,
-  locationList: PropTypes.array,
-  departmentList: PropTypes.array,
-  addPerson: PropTypes.func
+  addPerson: PropTypes.func,
+  loading: PropTypes.bool,
+  title: PropTypes.string,
 };
 
 AddNew.defaultProps = {
   userObj: {
-    isAdmin: false,
-    isManager: false,
     firstName: "",
     lastName: ""
   }

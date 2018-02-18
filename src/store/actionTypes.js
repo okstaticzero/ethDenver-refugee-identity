@@ -9,3 +9,4 @@ export const ACCOUNT_SUCCESS = "ACCOUNT_SUCCESS";
 
 export const ALL_REFUGEE = "ALL_REFUGEE";
 export const SEARCH_PARAMS = "SEARCH_PARAMS";
+export const GET_PROFILE = "GET_PROFILE";
