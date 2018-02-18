@@ -1,9 +1,9 @@
-@import '../node_modules/react-md/src/scss/react-md';
-@import 'variables';
+@import "../node_modules/react-md/src/scss/react-md";
+@import "variables";
 
 @include react-md-everything;
 
 /* react-md overrides: Place common style overrides for react-md below */
 .md-card {
-  width: 80%;
+  //width: 80%;
 }

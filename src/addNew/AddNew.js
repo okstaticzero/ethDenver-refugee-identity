@@ -28,7 +28,7 @@ export class AddNew extends Component {
       birthday: this.props.userObj.birthday || "",
       currentLocation: this.props.userObj.currentLocation || "",
       email: this.props.userObj.email || "",
-      added_file_arr: []
+      file_arr: []
     };
     this.ipfsApi = ipfsAPI({
       host: "ipfs.infura.io",
@@ -63,10 +63,7 @@ export class AddNew extends Component {
         console.log(ipfsId);
         const ipfUrl = "https://ipfs.io/ipfs/" + ipfsId;
         this.setState({
-          added_file_arr: [
-            ...this.state.added_file_arr,
-            { ipfUrl: ipfUrl, file: file }
-          ]
+          file_arr: [...this.state.file_arr, { ipfUrl: ipfUrl, file: file }]
         });
       })
       .catch(err => {
@@ -88,8 +85,6 @@ export class AddNew extends Component {
     console.log("data: ", data);
 
     this.props.addPerson(data);
-    //this.props.onSubmit(data);
-    //this.props.hideModal();
   }
 
   render() {
@@ -218,7 +213,7 @@ export class AddNew extends Component {
           <Cell size={3}>
             <Card className="card-right">
               <div>
-                {this.state.added_file_arr.map((item, i) => (
+                {this.state.file_arr.map((item, i) => (
                   <div>
                     <a href={item.ipfUrl} key={i} target="new">
                       {item.file}
