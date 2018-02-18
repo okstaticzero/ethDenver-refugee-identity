@@ -7,7 +7,7 @@ import Accounts from "../accounts/Accounts";
 import AddNew from "../addNew/AddNew";
 import "./App.css";
 import "material-design-icons/iconfont/material-icons.css";
-
+import Loader from "../Loader";
 import Nav from "../Nav/Nav";
 import {
   redirectUserToSearch,
@@ -31,6 +31,7 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
+        {this.props.loading && <Loader />}
         <div className="App-header">
           <Nav
             newSearchParams={this.props.newSearchParams}
@@ -55,7 +56,8 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    allRefugees: state.app.allRefugees
+    allRefugees: state.app.allRefugees,
+    loading: state.loadingState.loading
   };
 }
 
