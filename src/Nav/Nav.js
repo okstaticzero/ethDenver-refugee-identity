@@ -16,7 +16,7 @@ const Nav = props => {
           <img src={ref_logo} className="ref_logo" alt="ref_logo" />
         </NavLink>
       </div>
-
+      <p className="userName">{props.userName}</p>
       <div className="input-wrapper">
         <TextField
           id="search-with-icon-left"

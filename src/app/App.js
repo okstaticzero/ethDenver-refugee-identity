@@ -21,7 +21,6 @@ import SearchResults from "../SearchResults/SearchResults";
 import ProfileContainer from "../ProfileContainer/ProfileContainer";
 
 export class App extends Component {
-
   componentDidMount() {
     this.props.getAllRefugees();
   }
@@ -34,6 +33,7 @@ export class App extends Component {
           <Nav
             newSearchParams={this.props.newSearchParams}
             redirectUserToSearch={this.props.redirectUserToSearch}
+            userName={this.props.userName}
           />
         </div>
 
@@ -50,13 +50,18 @@ App.propTypes = {
   dispatch: PropTypes.func,
   redirectUserToSearch: PropTypes.func,
   getAllRefugees: PropTypes.func,
-  newSearchParams: PropTypes.func
+  newSearchParams: PropTypes.func,
+  userName: PropTypes.string
+};
+App.defaultProps = {
+  userName: ""
 };
 
 function mapStateToProps(state) {
   return {
     allRefugees: state.app.allRefugees,
-    loading: state.loadingState.loading
+    loading: state.loadingState.loading,
+    userName: state.accounts.currentUser.name
   };
 }
 
