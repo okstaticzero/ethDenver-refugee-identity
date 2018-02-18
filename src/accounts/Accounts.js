@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getAllUsers, createAccount } from "./AccountsActions";
 import Loader from "../Loader";
-import { account } from "../util/Uport";
+import { account } from "../util/web3Util";
 import { showPreloader } from "../app/AppActions";
 import "./Accounts.css";
 import { Button, Card } from "react-md";

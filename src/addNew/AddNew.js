@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { addPerson } from "./AddNewActions";
+import { addPerson, transferIdentity } from "./AddNewActions";
 
 import "./AddNew.css";
 import {
@@ -14,13 +15,14 @@ import {
   CardTitle
 } from "react-md";
 
-import {transfer} from '../util/Uport';
+import { initRefugeeAccount } from '../util/Uport';
 
 const ipfsAPI = require("ipfs-api");
 
 export class AddNew extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       name: this.props.viewUser.name || "",
       gender: this.props.viewUser.gender || "",
@@ -32,11 +34,13 @@ export class AddNew extends Component {
       email: this.props.viewUser.email || "",
       file_arr: this.props.viewUser.file_arr || []
     };
+
     this.ipfsApi = ipfsAPI({
       host: "ipfs.infura.io",
       port: 5001,
       protocol: "https"
     });
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.captureFile = this.captureFile.bind(this);
     this.saveToIpfs = this.saveToIpfs.bind(this);
@@ -83,12 +87,11 @@ export class AddNew extends Component {
     event.preventDefault();
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
     if (this.props.disabelForm) {
-      let test = transfer();
-      console.log("*************************")
-      console.log(test)
+      let refugeeAddress = await initRefugeeAccount();
+      this.props.transferIdentity(this.props.adminAddress, refugeeAddress, this.props.match.params.id)
     } else {
       let data = this.state;
       this.props.addPerson(data);
@@ -273,15 +276,18 @@ AddNew.propTypes = {
   viewUser: PropTypes.object,
   onSubmit: PropTypes.func,
   addPerson: PropTypes.func,
+  transferIdentity: PropTypes.func,
   loading: PropTypes.bool,
   title: PropTypes.string,
+  adminAddress: PropTypes.string,
   disabelForm: PropTypes.bool,
 };
 
 function mapStateToProps(state) {
   return {
-    loading: state.loadingState.loading
+    loading: state.loadingState.loading,
+    adminAddress: state.accounts.account,
   };
 }
 
-export default connect(mapStateToProps, { addPerson })(AddNew);
+export default withRouter(connect(mapStateToProps, { addPerson, transferIdentity })(AddNew));

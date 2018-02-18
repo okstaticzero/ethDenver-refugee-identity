@@ -61,3 +61,23 @@ export const addPerson = refObj => {
     }
   };
 };
+
+export function transferIdentity(adminAddress, refugeeAddress, id) {
+  console.log("******",adminAddress, refugeeAddress, id)
+  return async dispatch => {
+    try {
+      let transfer = await Refugee.transferIdentityOwnership(adminAddress, refugeeAddress, id);
+      dispatch(transferIdentitySuccess(transfer))
+    } catch (err) {
+      console.log("ERROR:", err);
+    }
+  }
+}
+
+export function transferIdentitySuccess(payload) {
+  console.log("SUCCESS!!:", payload);
+  return {
+    type: types.TRANSFER_SUCCESS,
+    payload: payload
+  }
+}

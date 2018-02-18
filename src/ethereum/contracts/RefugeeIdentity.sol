@@ -60,7 +60,6 @@ contract RefugeeIdentity is OwnerIdentity {
     
     function getAll() public view returns(uint[], bytes32[], bytes32[], bytes32[], bytes32[], bytes32[]) {
         
-        
         uint[] memory ids = new uint[](counter);
         bytes32[] memory names = new bytes32[](counter);
         bytes32[] memory origins = new bytes32[](counter);

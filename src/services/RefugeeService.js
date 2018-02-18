@@ -30,9 +30,9 @@ class Refugees {
     return userObject(item);
   }
 
-  async transferIdentityOwnership(userAddress, _refugeeAddress, _id) {
+  async transferIdentityOwnership(adminAddress, _refugeeAddress, _id) {
     const instance = await this.getInstance();
-    const item = await instance.transferIdentityOwnership(_refugeeAddress, _id, { from: userAddress });
+    const item = await instance.transferIdentityOwnership(_refugeeAddress, _id, { from: adminAddress });
     return item;
   }
 
