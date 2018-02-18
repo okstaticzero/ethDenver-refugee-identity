@@ -3,6 +3,7 @@
 import { web3 } from "../util/Uport";
 import contract from 'truffle-contract';
 import Refugee from '../ethereum/build/contracts/RefugeeIdentity.json';
+import { lchmod } from "fs";
 
 const RefugeeContract = contract(Refugee);
 
@@ -26,9 +27,9 @@ class Refugees {
     return items;
   }
 
-  async getOnePersonById(userAddress, _id) {
+  async getOnePersonById(_id) {
     const instance = await this.getInstance();
-    const item = await instance.getOnePersonById(_id, { from: userAddress });
+    const item = await instance.getOnePersonById(_id);
     return item;
   }
 
@@ -40,10 +41,23 @@ class Refugees {
 
   async getAll() {
     const instance = await this.getInstance();
-    const items = await instance.getAll();
-    return items;
+    const data = await instance.getAll();
+    return createUsersObject(data);
   }
 
 }
 
+function createUsersObject(data) {
+  let serializeData = [];
+  for (let i = 0; i < data[0].length; i++) {
+    serializeData.push({
+      id: data[0][i],
+      name: web3.toAscii(data[1][i]),
+      origin: web3.toAscii(data[2][i]),
+      oraganization: web3.toAscii(data[3][i]),
+      ifps: `${data[4][i]}${data[5][i]}`
+    })
+  }
+  return serializeData;
+}
 export default new Refugees();

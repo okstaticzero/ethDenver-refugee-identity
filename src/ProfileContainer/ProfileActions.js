@@ -5,6 +5,7 @@ export function profileView(id) {
   return async dispatch => {
     console.log("GET BY ID", id);
     let data = await Refugees.getOnePersonById(Number(id));
+    console.log(data);
     dispatch(profileViewSuccess(data));
   };
 }
