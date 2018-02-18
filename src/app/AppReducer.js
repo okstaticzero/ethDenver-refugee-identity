@@ -3,7 +3,8 @@ import * as types from "../store/actionTypes";
 const initialState = { 
         allRefugees: [],
         searchParams: '',
-        userProfile: {}
+        userProfile: {},
+        successPopup: true,
     }
 
 export default (state = initialState, action) => {
@@ -16,6 +17,12 @@ export default (state = initialState, action) => {
         
         case types.SEARCH_PARAMS:
             return { ...state, searchParams: action.payload }
+        
+        case types.TRANSFER_SUCCESS: 
+            return { ...state, successPopup: action.payload}
+        
+        case types.CLOSE_POPUP:
+            return { ...state, successPopup: action.payload }
 
         default:
             return state;

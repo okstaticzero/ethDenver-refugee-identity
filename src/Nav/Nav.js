@@ -3,6 +3,7 @@ import React from "react";
 import { TextField, FontIcon } from "react-md";
 import { NavLink } from "react-router-dom";
 import ref_logo from "../assets/images/refugee_logo.svg";
+
 import "./Nav.css";
 
 const Nav = props => {

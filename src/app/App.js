@@ -6,6 +6,7 @@ import { Route } from "react-router";
 import Accounts from "../accounts/Accounts";
 import NewUserContainer from "../NewUser/NewUser";
 import Loader from "../Loader";
+
 import "./App.css";
 import "material-design-icons/iconfont/material-icons.css";
 

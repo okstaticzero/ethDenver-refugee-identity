@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { addPerson, transferIdentity } from "./AddNewActions";
+import { addPerson, transferIdentity, closePopup } from "./AddNewActions";
+
+import Success from './Success';
 
 import "./AddNew.css";
 import {
@@ -101,6 +103,11 @@ export class AddNew extends Component {
   render() {
     return (
       <div className="addnew-wrapper">
+        <Success 
+          visible={ this.props.successPopup }
+          onHide={ this.props.closePopup }
+          user={ this.props.viewUser.name }
+        />
         <Grid>
           <Cell size={9}>
             <Card className="card-left">
@@ -279,7 +286,8 @@ function mapStateToProps(state) {
   return {
     loading: state.loadingState.loading,
     adminAddress: state.accounts.account,
+    successPopup: state.app.successPopup,
   };
 }
 
-export default withRouter(connect(mapStateToProps, { addPerson, transferIdentity })(AddNew));
+export default withRouter(connect(mapStateToProps, { addPerson, transferIdentity, closePopup })(AddNew));

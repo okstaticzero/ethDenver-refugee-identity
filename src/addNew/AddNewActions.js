@@ -78,6 +78,13 @@ export function transferIdentitySuccess(payload) {
   console.log("SUCCESS!!:", payload);
   return {
     type: types.TRANSFER_SUCCESS,
-    payload: payload
+    payload: true
+  }
+}
+
+export function closePopup() {
+  return {
+    type: types.CLOSE_POPUP,
+    payload: false
   }
 }

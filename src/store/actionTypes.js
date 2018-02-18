@@ -11,3 +11,4 @@ export const ALL_REFUGEE = "ALL_REFUGEE";
 export const SEARCH_PARAMS = "SEARCH_PARAMS";
 export const GET_PROFILE = "GET_PROFILE";
 export const TRANSFER_SUCCESS = "TRANSFER_SUCCESS";
+export const CLOSE_POPUP = "CLOSE_POPUP";
