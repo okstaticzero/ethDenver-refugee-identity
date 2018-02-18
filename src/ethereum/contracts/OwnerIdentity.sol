@@ -24,5 +24,10 @@ contract OwnerIdentity {
     function addAdmin(address _address) _ceoApprove() public {
         admins[_address] = true;
     }
+
+    function isAdmin() public returns(bool) {
+        return admins[msg.sender];
+    }
+
     
 }
