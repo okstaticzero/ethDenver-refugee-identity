@@ -2,6 +2,10 @@
   "name": "react_ethereum",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "8.x",
+    "yarn": "1.2.1"
+  },
   "dependencies": {
     "@reedsa/react-scripts": "0.2.1",
     "axios": "^0.17.1",
