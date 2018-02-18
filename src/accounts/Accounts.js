@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ripple from "../assets/images/ripple.svg";
 import { getAllUsers, createAccount } from "./AccountsActions";
 import Loader from "../Loader";
-import { web3, account } from "../util/web3Util";
+import { account } from "../util/web3Util";
 import { showPreloader } from "../app/AppActions";
 import "./Accounts.css";
 import { Button, Card } from "react-md";

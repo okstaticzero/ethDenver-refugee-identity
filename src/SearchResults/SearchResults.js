@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { TextField, FontIcon, Card, CardTitle } from 'react-md';
+import { Card, CardTitle } from 'react-md';
 import { NavLink } from 'react-router-dom';
 
 import './SearchResults.css';

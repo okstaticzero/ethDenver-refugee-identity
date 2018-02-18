@@ -20,9 +20,6 @@ import SearchResults from "../SearchResults/SearchResults";
 import ProfileContainer from "../ProfileContainer/ProfileContainer";
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.getAllRefugees();

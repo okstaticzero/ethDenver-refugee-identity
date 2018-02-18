@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import AddNew from "../addNew/AddNew";
+import AddNew from "../AddNew/AddNew";
 
 export class NewUserContainer extends Component {
   render() {

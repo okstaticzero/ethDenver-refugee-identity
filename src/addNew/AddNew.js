@@ -218,7 +218,16 @@ export class AddNew extends Component {
                   type="submit"
                 >
                   <p>Add to database</p>
-                </Button> : null }
+                </Button> : 
+                  <Button
+                      raised
+                      primary
+                      className="custom-button addnew-btn"
+                      id="transferIdentity"
+                      type="submit" >
+                    <p>Transfer Identity</p>
+                  </Button>
+               }
               </form>
             </Card>
           </Cell>

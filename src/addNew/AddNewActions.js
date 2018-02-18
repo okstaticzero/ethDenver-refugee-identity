@@ -1,6 +1,5 @@
 import * as types from "../store/actionTypes";
 import Refugee from "../services/RefugeeService";
-import { push } from "react-router-redux";
 import { setJSON } from "../util/IPFS";
 import { showPreloader } from "../app/AppActions";
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import AddNew from "../addNew/AddNew";
+import AddNew from "../AddNew/AddNew";
 import { profileView } from "./ProfileActions.js";
 
 export class ProfileContainer extends Component {
@@ -15,7 +15,10 @@ export class ProfileContainer extends Component {
 
   render() {
     if (!this.props.user) return <h2>LOADING</h2>;
-    return <AddNew disabelForm={true} viewUser={this.props.user} />;
+    return <AddNew 
+      disabelForm={true} 
+      viewUser={this.props.user} 
+      />;
   }
 }
 
