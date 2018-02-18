@@ -51,7 +51,7 @@ contract RefugeeIdentity is OwnerIdentity {
     
     function getOnePersonById(uint _id) public  returns(uint, bytes32, bytes32, bytes32, bytes32, bytes32) {
         if (counter > _id) {
-            Person memory currentPerson = people[_id]; 
+            var currentPerson = people[_id];
             return (currentPerson.id, currentPerson.fullName, currentPerson.origin, currentPerson.organization, currentPerson.ipfsFirst, currentPerson.ipfsSecond);
         } else {
             eventGetPerson("Invalid ID used for lookup", _id);
