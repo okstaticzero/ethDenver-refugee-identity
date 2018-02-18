@@ -122,7 +122,6 @@ export class AddNew extends Component {
                       label="Name"
                       onChange={name => this.setState({ name })}
                       value={this.state.name}
-                      required
                       className="md-cell md-cell--12"
                       disabled={this.props.disabelForm}
                     />
@@ -136,7 +135,6 @@ export class AddNew extends Component {
                       type="text"
                       value={this.state.gender}
                       className="md-cell md-cell--12"
-                      required
                       disabled={this.props.disabelForm}
                     />
                     <TextField
@@ -148,7 +146,6 @@ export class AddNew extends Component {
                       type="text"
                       value={this.state.origin}
                       className="md-cell md-cell--12"
-                      required
                       disabled={this.props.disabelForm}
                     />
                     <TextField
@@ -160,7 +157,6 @@ export class AddNew extends Component {
                       type="text"
                       value={this.state.phonenumber}
                       className="md-cell md-cell--12"
-                      required
                       disabled={this.props.disabelForm}
                     />
                   </Cell>
@@ -174,7 +170,6 @@ export class AddNew extends Component {
                       type="text"
                       value={this.state.birthday}
                       className="md-cell md-cell--12"
-                      required
                       disabled={this.props.disabelForm}
                     />
                     <TextField
@@ -186,7 +181,6 @@ export class AddNew extends Component {
                       type="text"
                       value={this.state.organization}
                       className="md-cell md-cell--12"
-                      required
                       disabled={this.props.disabelForm}
                     />
                     <TextField
@@ -200,7 +194,6 @@ export class AddNew extends Component {
                       type="text"
                       value={this.state.currentLocation}
                       className="md-cell md-cell--12"
-                      required
                       disabled={this.props.disabelForm}
                     />
                     <TextField
@@ -213,7 +206,6 @@ export class AddNew extends Component {
                       value={this.state.email}
                       className="md-cell md-cell--12"
                       errorText="Email is required."
-                      required
                       disabled={this.props.disabelForm}
                     />
                   </Cell>

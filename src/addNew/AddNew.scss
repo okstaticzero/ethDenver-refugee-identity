@@ -5,9 +5,15 @@
   margin: 0 auto;
   text-align: center;
 }
+
 .add-new-refugee-title.md-card-title {
   display: block;
+  h2 {
+    font-size: 36px;
+    color: $black;
+  }
 }
+
 .addnew-btn {
   margin-bottom: 40px !important;
 }
@@ -28,12 +34,22 @@
   }
 }
 
+input[type="text"] {
+  color: $black;
+  font-size: 18px;
+}
+
+.md-floating-label.md-floating-label--floating {
+        color: $light-grey;
+        font-size: 14px;
+      }
+
 .md-text-field-container--disabled {
       .md-divider {
         display: none;
         background: none;
       }
       .md-floating-label.md-floating-label--floating {
-        color: $black;
+        color: $light-grey;
       }
     }

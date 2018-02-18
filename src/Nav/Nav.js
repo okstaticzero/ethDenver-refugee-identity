@@ -20,7 +20,7 @@ const Nav = props => {
         <TextField
           id="search-with-icon-left"
           className="search-input"
-          label="Search refugee blockchain by id, name or origin.. "
+          placeholder="Search refugee blockchain by id, name or origin..."
           type="search"
           leftIcon={<FontIcon className="search-font">search</FontIcon>}
           size={50}
