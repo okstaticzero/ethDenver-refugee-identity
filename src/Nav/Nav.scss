@@ -4,10 +4,18 @@
     .title-wrapper {
         background-color: $black;
         width: 100%;
+        height: 12vh;
+        
+        a {
+            text-decoration: none;
+        }
+
         h2 {
             color: $white;
             font-weight: bold;
             letter-spacing: 2px;
+            padding-left: 30px;
+            padding-top: 2vh;
         }
     }
 
@@ -15,10 +23,20 @@
         width: 100%;
         display: flex;
         justify-content: center;
-
+        background-color: $white;
+        
+        .search-font {
+            color: $green;
+            font-size: 35px;
+            margin-bottom: -5px;
+        }
         .search-input {
             background-color: $white;
             width: 80%;
+            padding-bottom: 7vh;
+            .md-divider {
+                display: none;
+            }
         }
     }
  
