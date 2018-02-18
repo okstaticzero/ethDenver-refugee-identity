@@ -20,10 +20,10 @@ contract RefugeeIdentity is OwnerIdentity {
        bool exists;
    }
 
-   event eventPersonAdded(string, uint);
-   event eventPersonEdited(string, uint);
-   event eventGetPerson(string, uint);
-   event eventtransferIdentityOwnership(string, uint);
+   event eventPersonAdded(string msg, uint id);
+   event eventPersonEdited(string msg, uint id);
+   event eventGetPerson(string msg, uint id);
+   event eventtransferIdentityOwnership(string msg, uint id);
    
     mapping(uint => Person) people;
     
