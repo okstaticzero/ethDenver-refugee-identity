@@ -79,7 +79,30 @@ input[type="text"] {
 
 @media only screen and (max-width: 500px) {
   .addnew-wrapper {
-    .md-grid{
-      // fix width on mobile
+    width: 100%;
+    .md-cell.md-cell--3 {
+      width: 100%;
+      }
     }
+}
+
+@media only screen and (max-width: 850px) {
+  .addnew-wrapper {
+    .md-cell.md-cell--3 {
+      width: 100%;
+      }
+    }
+}
+
+.list-of-files {
+  .list-items {
+    padding-top: 15px;
+  }
+  a {
+    color: $black;
+  }
+}
+
+.md-inline-block.md-file-input-container {
+  padding-top: 20px;
 }

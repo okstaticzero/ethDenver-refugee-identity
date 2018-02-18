@@ -243,10 +243,10 @@ export class AddNew extends Component {
           </Cell>
           <Cell size={3}>
             <Card className="card-right">
-              <div>
+              <div className="list-of-files">
                 {this.state.file_arr.map((item, i) => (
-                  <div key={i}>
-                    <a href={item.ipfUrl} target="new">
+                  <div key={i} className="list-items">
+                    <a href={item.ipfUrl} target="new" >
                       {item.file}
                     </a>
                     <br />

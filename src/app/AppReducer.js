@@ -4,7 +4,7 @@ const initialState = {
         allRefugees: [],
         searchParams: '',
         userProfile: {},
-        successPopup: true,
+        successPopup: false,
     }
 
 export default (state = initialState, action) => {
