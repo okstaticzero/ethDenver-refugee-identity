@@ -9,11 +9,15 @@ export function redirectUserToSearch() {
     };
 }
 
+// ================== GET ALL DATA =======================================
 export function getAllRefugees() {
     return async dispatch => {
-        console.log("GET ALL DATA");
-        let data = await Refugees.getAll();
-        dispatch(getAllRefugeesSucess(data));
+        try {
+            let data = await Refugees.getAll();
+            dispatch(getAllRefugeesSucess(data));
+        } catch(err) {
+            console.log(err);
+        }
     };
 }
 

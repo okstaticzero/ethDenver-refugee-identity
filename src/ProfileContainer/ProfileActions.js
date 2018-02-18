@@ -1,12 +1,14 @@
 import * as types from "../store/actionTypes";
 import Refugees from '../services/RefugeeService';
 
-export function profileView(id) {
+export function profileView(data) {
   return async dispatch => {
-    console.log("GET BY ID", id);
-    let data = await Refugees.getOnePersonById(Number(id));
-    console.log(data);
-    dispatch(profileViewSuccess(data));
+    try {
+      let request = await Refugees.getOnePersonById(Number(data.id));
+      dispatch(profileViewSuccess(request));
+    } catch (err) {
+      console.log(err);
+    }
   };
 }
 
