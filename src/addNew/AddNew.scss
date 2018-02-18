@@ -3,7 +3,9 @@
   margin: 0 auto;
   text-align: center;
 }
-
+.add-new-refugee-title {
+  display: block;
+}
 .addnew-btn {
   margin-bottom: 40px;
 }
@@ -15,3 +17,12 @@
 #image-input {
   margin-top: 40px;
 }
+
+#submit {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  p {
+    font-size: 12px;
+  }
+}
+

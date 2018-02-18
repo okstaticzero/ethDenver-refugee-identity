@@ -9,6 +9,7 @@ export class NewUserContainer extends Component {
         return (
             <AddNew
                disabelForm = { false }
+               title={"Add New Refugee"}
             />
         );
     }

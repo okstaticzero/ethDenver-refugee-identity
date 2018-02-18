@@ -7,12 +7,11 @@ import "./AddNew.css";
 import {
   Button,
   Card,
-  SelectField,
   TextField,
   Cell,
   Grid,
-  SelectionControl,
-  FileInput
+  FileInput,
+  CardTitle
 } from "react-md";
 
 const ipfsAPI = require("ipfs-api");
@@ -89,13 +88,14 @@ export class AddNew extends Component {
   }
 
   render() {
-    console.log("&&&&&&&&&&&&");
-    console.log(this.props.userProfile)
     return (
       <div className="addnew-wrapper">
         <Grid>
           <Cell size={9}>
             <Card className="card-left">
+              <CardTitle
+                className="add-new-refugee-title"
+                title={this.props.title} />
               <form
                 id="add-employee-form"
                 onSubmit={this.handleSubmit}
@@ -257,7 +257,8 @@ AddNew.propTypes = {
   userObj: PropTypes.object,
   onSubmit: PropTypes.func,
   addPerson: PropTypes.func,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  title: PropTypes.string,
 };
 
 AddNew.defaultProps = {
