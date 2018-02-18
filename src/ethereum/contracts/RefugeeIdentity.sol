@@ -85,6 +85,7 @@ contract RefugeeIdentity is OwnerIdentity {
             eventtransferIdentityOwnership("Identity owenership transfered", _id);
         } else {
             eventtransferIdentityOwnership("Error when trying to transfer identity owenership", _id);
+            throw;
         }
     }
     
