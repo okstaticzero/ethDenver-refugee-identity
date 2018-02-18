@@ -49,7 +49,7 @@ contract RefugeeIdentity is OwnerIdentity {
         }
     }
     
-    function getOnePersonById(uint _id) public  returns(uint, bytes32, bytes32, bytes32, bytes32, bytes32) {
+    function getOnePersonById(uint _id) public view returns(uint, bytes32, bytes32, bytes32, bytes32, bytes32) {
         if (counter > _id) {
             return (people[_id].id, people[_id].fullName, people[_id].origin, people[_id].organization, people[_id].ipfsFirst, people[_id].ipfsSecond);
         } else {

@@ -22,7 +22,7 @@
       "type": "function"
     },
     {
-      "constant": false,
+      "constant": true,
       "inputs": [],
       "name": "isAdmin",
       "outputs": [
@@ -32,15 +32,15 @@
         }
       ],
       "payable": false,
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b60008054600160a060020a033316600160a060020a0319909116811782558152600160208190526040909120805460ff19169091179055610159806100556000396000f30060606040526004361061004b5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663704802758114610050578063b6db75a01461007e575b600080fd5b341561005b57600080fd5b61007c73ffffffffffffffffffffffffffffffffffffffff600435166100a5565b005b341561008957600080fd5b610091610101565b604051901515815260200160405180910390f35b6000543373ffffffffffffffffffffffffffffffffffffffff9081169116146100cd57600080fd5b73ffffffffffffffffffffffffffffffffffffffff166000908152600160208190526040909120805460ff19169091179055565b73ffffffffffffffffffffffffffffffffffffffff331660009081526001602052604090205460ff16905600a165627a7a72305820bc50d8c24bae45dacd1b93f3fc8a534faf4130ed72aa8a6a1368744e32c4b32f0029",
-  "deployedBytecode": "0x60606040526004361061004b5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663704802758114610050578063b6db75a01461007e575b600080fd5b341561005b57600080fd5b61007c73ffffffffffffffffffffffffffffffffffffffff600435166100a5565b005b341561008957600080fd5b610091610101565b604051901515815260200160405180910390f35b6000543373ffffffffffffffffffffffffffffffffffffffff9081169116146100cd57600080fd5b73ffffffffffffffffffffffffffffffffffffffff166000908152600160208190526040909120805460ff19169091179055565b73ffffffffffffffffffffffffffffffffffffffff331660009081526001602052604090205460ff16905600a165627a7a72305820bc50d8c24bae45dacd1b93f3fc8a534faf4130ed72aa8a6a1368744e32c4b32f0029",
-  "sourceMap": "26:588:0:-;;;58:101;;;;;;;;100:6;:19;;-1:-1:-1;;;;;109:10:0;100:19;-1:-1:-1;;;;;;100:19:0;;;;;;;129:18;;100:19;129:18;;;;;;;;:25;;-1:-1:-1;;129:25:0;;;;;;26:588;;;;;;",
-  "deployedSourceMap": "26:588:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;421:97;;;;;;;;;;;;;;;;;;524:82;;;;;;;;;;;;;;;;;;;;;;;;;;;;;421:97;386:6;;372:10;386:6;372:20;;;386:6;;372:20;364:29;;;;;;488:16;;;;;;507:4;488:16;;;;;;;;:23;;-1:-1:-1;;488:23:0;;;;;;421:97::o;524:82::-;581:18;588:10;581:18;558:4;581:18;;;:6;:18;;;;;;;;524:82;:::o",
-  "source": "pragma solidity ^0.4.19;\n\ncontract OwnerIdentity {\n    \n  function OwnerIdentity() public {\n        _owner = msg.sender;\n        admins[msg.sender] = true;\n  }\n   \n    address _owner;\n    \n    mapping(address => bool) internal admins;\n    \n    modifier _adminOnly() {\n        require(admins[msg.sender]);\n        _;\n    }\n    \n    modifier _ceoApprove() {\n        require(msg.sender == _owner);\n        _;\n    }\n    \n    function addAdmin(address _address) _ceoApprove() public {\n        admins[_address] = true;\n    }\n\n    function isAdmin() public returns(bool) {\n        return admins[msg.sender];\n    }\n\n    \n}\n",
+  "bytecode": "0x6060604052341561000f57600080fd5b60008054600160a060020a033316600160a060020a0319909116811782558152600160208190526040909120805460ff19169091179055610159806100556000396000f30060606040526004361061004b5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663704802758114610050578063b6db75a01461007e575b600080fd5b341561005b57600080fd5b61007c73ffffffffffffffffffffffffffffffffffffffff600435166100a5565b005b341561008957600080fd5b610091610101565b604051901515815260200160405180910390f35b6000543373ffffffffffffffffffffffffffffffffffffffff9081169116146100cd57600080fd5b73ffffffffffffffffffffffffffffffffffffffff166000908152600160208190526040909120805460ff19169091179055565b73ffffffffffffffffffffffffffffffffffffffff331660009081526001602052604090205460ff16905600a165627a7a723058207ff645b870acceeaa58704a40e3939bd23b4e12486610e859658c2bbc0a83c980029",
+  "deployedBytecode": "0x60606040526004361061004b5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663704802758114610050578063b6db75a01461007e575b600080fd5b341561005b57600080fd5b61007c73ffffffffffffffffffffffffffffffffffffffff600435166100a5565b005b341561008957600080fd5b610091610101565b604051901515815260200160405180910390f35b6000543373ffffffffffffffffffffffffffffffffffffffff9081169116146100cd57600080fd5b73ffffffffffffffffffffffffffffffffffffffff166000908152600160208190526040909120805460ff19169091179055565b73ffffffffffffffffffffffffffffffffffffffff331660009081526001602052604090205460ff16905600a165627a7a723058207ff645b870acceeaa58704a40e3939bd23b4e12486610e859658c2bbc0a83c980029",
+  "sourceMap": "26:593:0:-;;;58:101;;;;;;;;100:6;:19;;-1:-1:-1;;;;;109:10:0;100:19;-1:-1:-1;;;;;;100:19:0;;;;;;;129:18;;100:19;129:18;;;;;;;;:25;;-1:-1:-1;;129:25:0;;;;;;26:593;;;;;;",
+  "deployedSourceMap": "26:593:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;421:97;;;;;;;;;;;;;;;;;;524:87;;;;;;;;;;;;;;;;;;;;;;;;;;;;;421:97;386:6;;372:10;386:6;372:20;;;386:6;;372:20;364:29;;;;;;488:16;;;;;;507:4;488:16;;;;;;;;:23;;-1:-1:-1;;488:23:0;;;;;;421:97::o;524:87::-;586:18;593:10;586:18;563:4;586:18;;;:6;:18;;;;;;;;524:87;:::o",
+  "source": "pragma solidity ^0.4.19;\n\ncontract OwnerIdentity {\n    \n  function OwnerIdentity() public {\n        _owner = msg.sender;\n        admins[msg.sender] = true;\n  }\n   \n    address _owner;\n    \n    mapping(address => bool) internal admins;\n    \n    modifier _adminOnly() {\n        require(admins[msg.sender]);\n        _;\n    }\n    \n    modifier _ceoApprove() {\n        require(msg.sender == _owner);\n        _;\n    }\n    \n    function addAdmin(address _address) _ceoApprove() public {\n        admins[_address] = true;\n    }\n\n    function isAdmin() public view returns(bool) {\n        return admins[msg.sender];\n    }\n\n    \n}\n",
   "sourcePath": "/Users/m_655507/Documents/Projects/BlockChain/ethDenver-refugee-identity/src/ethereum/contracts/OwnerIdentity.sol",
   "ast": {
     "attributes": {
@@ -168,7 +168,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 509,
+                                  "referencedDeclaration": 83,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -246,7 +246,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 509,
+                                      "referencedDeclaration": 83,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -419,7 +419,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 512,
+                              "referencedDeclaration": 86,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -469,7 +469,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 509,
+                                      "referencedDeclaration": 83,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -559,7 +559,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 512,
+                              "referencedDeclaration": 86,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -600,7 +600,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 509,
+                                      "referencedDeclaration": 83,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -837,7 +837,7 @@
           },
           {
             "attributes": {
-              "constant": false,
+              "constant": true,
               "implemented": true,
               "isConstructor": false,
               "modifiers": [
@@ -846,7 +846,7 @@
               "name": "isAdmin",
               "payable": false,
               "scope": 71,
-              "stateMutability": "nonpayable",
+              "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
             },
@@ -883,17 +883,17 @@
                         },
                         "id": 61,
                         "name": "ElementaryTypeName",
-                        "src": "558:4:0"
+                        "src": "563:4:0"
                       }
                     ],
                     "id": 62,
                     "name": "VariableDeclaration",
-                    "src": "558:4:0"
+                    "src": "563:4:0"
                   }
                 ],
                 "id": 63,
                 "name": "ParameterList",
-                "src": "557:6:0"
+                "src": "562:6:0"
               },
               {
                 "children": [
@@ -924,7 +924,7 @@
                             },
                             "id": 64,
                             "name": "Identifier",
-                            "src": "581:6:0"
+                            "src": "586:6:0"
                           },
                           {
                             "attributes": {
@@ -944,48 +944,48 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 509,
+                                  "referencedDeclaration": 83,
                                   "type": "msg",
                                   "value": "msg"
                                 },
                                 "id": 65,
                                 "name": "Identifier",
-                                "src": "588:3:0"
+                                "src": "593:3:0"
                               }
                             ],
                             "id": 66,
                             "name": "MemberAccess",
-                            "src": "588:10:0"
+                            "src": "593:10:0"
                           }
                         ],
                         "id": 67,
                         "name": "IndexAccess",
-                        "src": "581:18:0"
+                        "src": "586:18:0"
                       }
                     ],
                     "id": 68,
                     "name": "Return",
-                    "src": "574:25:0"
+                    "src": "579:25:0"
                   }
                 ],
                 "id": 69,
                 "name": "Block",
-                "src": "564:42:0"
+                "src": "569:42:0"
               }
             ],
             "id": 70,
             "name": "FunctionDefinition",
-            "src": "524:82:0"
+            "src": "524:87:0"
           }
         ],
         "id": 71,
         "name": "ContractDefinition",
-        "src": "26:588:0"
+        "src": "26:593:0"
       }
     ],
     "id": 72,
     "name": "SourceUnit",
-    "src": "0:615:0"
+    "src": "0:620:0"
   },
   "compiler": {
     "name": "solc",
@@ -993,5 +993,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-18T03:30:27.474Z"
+  "updatedAt": "2018-02-18T03:49:24.789Z"
 }

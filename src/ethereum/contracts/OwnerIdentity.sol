@@ -25,7 +25,7 @@ contract OwnerIdentity {
         admins[_address] = true;
     }
 
-    function isAdmin() public returns(bool) {
+    function isAdmin() public view returns(bool) {
         return admins[msg.sender];
     }
 
