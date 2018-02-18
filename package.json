@@ -47,7 +47,9 @@
     "lint:watch": "esw -w src/**/*.js",
     "start-js": "react-scripts start",
     "test:once": "npm rebuild node-sass && yarn build-css && CI=true react-scripts test src/**/* --env=jsdom",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build-heroku": "npm rebuild node-sass && yarn lint && yarn test:once && yarn build-css && react-scripts build",
+    "heroku-postbuild": "npm run build-heroku"
   },
   "devDependencies": {
     "eslint-watch": "^3.1.0",
