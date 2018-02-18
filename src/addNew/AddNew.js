@@ -20,15 +20,15 @@ export class AddNew extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: this.props.userObj.name || "",
-      gender: this.props.userObj.gender || "",
-      origin: this.props.userObj.origin || "",
-      organization: this.props.userObj.organization || "",
-      phonenumber: this.props.userObj.phonenumber || "",
-      birthday: this.props.userObj.birthday || "",
-      currentLocation: this.props.userObj.currentLocation || "",
-      email: this.props.userObj.email || "",
-      file_arr: []
+      name: this.props.viewUser.name || "",
+      gender: this.props.viewUser.gender || "",
+      origin: this.props.viewUser.origin || "",
+      organization: this.props.viewUser.organization || "",
+      phonenumber: this.props.viewUser.phonenumber || "",
+      birthday: this.props.viewUser.birthday || "",
+      currentLocation: this.props.viewUser.currentLocation || "",
+      email: this.props.viewUser.email || "",
+      file_arr: this.props.viewUser.file_arr || []
     };
     this.ipfsApi = ipfsAPI({
       host: "ipfs.infura.io",
@@ -40,6 +40,10 @@ export class AddNew extends Component {
     this.saveToIpfs = this.saveToIpfs.bind(this);
     this.arrayBufferToString = this.arrayBufferToString.bind(this);
     this.handleFileSubmit = this.handleFileSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState(nextProps.viewUser);
   }
 
   captureFile(files, event) {
@@ -91,7 +95,7 @@ export class AddNew extends Component {
             <Card className="card-left">
               <CardTitle
                 className="add-new-refugee-title"
-                title={this.props.title || ''} />
+                title={this.props.title || this.props.viewUser.name } />
               <form
                 id="add-employee-form"
                 onSubmit={this.handleSubmit}
@@ -204,7 +208,8 @@ export class AddNew extends Component {
                   </Cell>
                 </Grid>
 
-                <Button
+                {
+                  !this.props.disabelForm ? <Button
                   raised
                   primary
                   className="custom-button addnew-btn"
@@ -213,7 +218,7 @@ export class AddNew extends Component {
                   type="submit"
                 >
                   <p>Add to database</p>
-                </Button>
+                </Button> : null }
               </form>
             </Card>
           </Cell>
@@ -221,8 +226,8 @@ export class AddNew extends Component {
             <Card className="card-right">
               <div>
                 {this.state.file_arr.map((item, i) => (
-                  <div>
-                    <a href={item.ipfUrl} key={i} target="new">
+                  <div key={i}>
+                    <a href={item.ipfUrl} target="new">
                       {item.file}
                     </a>
                     <br />
@@ -230,13 +235,13 @@ export class AddNew extends Component {
                 ))}
                 <form id="captureMedia" onSubmit={this.handleSubmit}>
                   {/* <input type="file" onChange={this.captureFile} /> */}
-                  <FileInput
+                  {!this.props.disabelForm ? <FileInput
                     id="image-input"
                     onChange={this.captureFile}
                     accept="*"
                     name="images"
                     primary
-                  />
+                  /> : null }
                 </form>
               </div>
             </Card>
@@ -250,18 +255,11 @@ export class AddNew extends Component {
 }
 
 AddNew.propTypes = {
-  userObj: PropTypes.object,
+  viewUser: PropTypes.object,
   onSubmit: PropTypes.func,
   addPerson: PropTypes.func,
   loading: PropTypes.bool,
   title: PropTypes.string,
-};
-
-AddNew.defaultProps = {
-  userObj: {
-    firstName: "",
-    lastName: ""
-  }
 };
 
 function mapStateToProps(state) {
