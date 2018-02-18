@@ -46,7 +46,6 @@ export class AddNew extends Component {
     event.stopPropagation();
     event.preventDefault();
     const file = event.target.files[0];
-    console.log("file: ", file);
     let reader = new window.FileReader();
     reader.onloadend = () => this.saveToIpfs(reader, file.name);
     reader.readAsArrayBuffer(file);
@@ -58,7 +57,6 @@ export class AddNew extends Component {
     this.ipfsApi
       .add(buffer, { progress: prog => console.log(`received: ${prog}`) })
       .then(response => {
-        console.log(response);
         ipfsId = response[0].hash;
         console.log(ipfsId);
         const ipfUrl = "https://ipfs.io/ipfs/" + ipfsId;
@@ -82,8 +80,6 @@ export class AddNew extends Component {
   handleSubmit(e) {
     e.preventDefault();
     let data = this.state;
-    console.log("data: ", data);
-
     this.props.addPerson(data);
   }
 
@@ -95,7 +91,7 @@ export class AddNew extends Component {
             <Card className="card-left">
               <CardTitle
                 className="add-new-refugee-title"
-                title={this.props.title} />
+                title={this.props.title || ''} />
               <form
                 id="add-employee-form"
                 onSubmit={this.handleSubmit}

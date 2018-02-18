@@ -1,33 +1,6 @@
 import * as types from "../store/actionTypes";
 
 const initialState = { 
-    // allRefugees: [{
-    //     id: 1,
-    //     name: "bud aminof",
-    //     origin: "israel"
-    // },
-    // {
-    //     name: "kiersten cohen",
-    //     id: 2,
-    //     origin: "colorado boulder"
-    // },
-    // {
-    //     name: "matt wallce",
-    //     id: 3,
-    //     origin: "aman joran"
-    // },
-    // {
-    //     name: "neeraj engineer",
-    //     id: 4,
-    //     origin: "india puna"
-    // },
-    // {
-    //     name: "nahar anin",
-    //     id: 5,
-    //     origin: "slovania city"
-    // }
-
-    // ],
         allRefugees: [],
         searchParams: '',
         userProfile: {}
@@ -39,7 +12,7 @@ export default (state = initialState, action) => {
             return { ...state, allRefugees: action.payload };
         
         case types.GET_PROFILE: 
-            return { ...state, userProfile: action.paylaod }
+            return { ...state, userProfile: action.payload }
         
         case types.SEARCH_PARAMS:
             return { ...state, searchParams: action.payload }

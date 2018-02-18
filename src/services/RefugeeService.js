@@ -28,12 +28,9 @@ class Refugees {
   }
 
   async getOnePersonById(_id) {
-    console.log("SERVICE", _id);
     const instance = await this.getInstance();
-    console.log("INSTANCE");
     const item = await instance.getOnePersonById(_id);
-    console.log("RETURNS", item);
-    return createUsersObject(item);
+    return userObject(item);
   }
 
   async transferIdentityOwnership(userAddress, _refugeeAddress, _id) {
@@ -54,16 +51,24 @@ export default new Refugees();
 
 function createUsersObject(data) {
   let serializeData = [];
-
-  for (let i = 0; i < data[0].length; i++) {
+  for (let i = 0; i < data[1].length; i++) {
     serializeData.push({
-      id: data[0][i],
+      id: data[0][i]['c'][0],
       name: web3.toAscii(data[1][i]),
       origin: web3.toAscii(data[2][i]),
       oraganization: web3.toAscii(data[3][i]),
-      ifps: `${data[4][i]}${data[5][i]}`
+      ipfs: `${web3.toAscii(data[4][i])}${web3.toAscii(data[5][i])}`
     })
   }
-  
   return serializeData;
+}
+
+function userObject(data) {
+  return {
+    id: data[0].c[0],
+    name: web3.toAscii(data[1]),
+    origin: web3.toAscii(data[2]),
+    oraganization: web3.toAscii(data[3]),
+    ipfs: `${web3.toAscii(data[4])}${web3.toAscii(data[5])}`
+  }
 }
