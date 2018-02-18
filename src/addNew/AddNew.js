@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPerson } from "./AddNewActions";
-import Loader from "../Loader";
+
 import "./AddNew.css";
 import {
   Button,
@@ -245,8 +245,6 @@ export class AddNew extends Component {
                 </form>
               </div>
             </Card>
-
-            {this.props.loading && <Loader />}
           </Cell>
         </Grid>
       </div>
