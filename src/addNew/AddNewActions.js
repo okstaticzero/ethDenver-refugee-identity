@@ -3,6 +3,7 @@ import Refugee from "../services/RefugeeService";
 import { setJSON } from "../util/IPFS";
 import { showPreloader } from "../app/AppActions";
 import { attestRefugee } from "../util/Uport";
+import { push } from "react-router-redux";
 
 export const usersSuccess = data => {
   return {
@@ -39,10 +40,7 @@ export const addPerson = refObj => {
       const ipfsHash = await setJSON(refObj);
       const hash1 = ipfsHash.substr(0, 32);
       const hash2 = ipfsHash.substr(32);
-      console.log("hash1: ", hash1);
-      console.log("hash2: ", hash2);
-      console.log("account: ", account);
-      //addPerson(userAddress, _fullName, _origin, _organization, _ipfs1, _ipfs2)
+      
       const refugee = await Refugee.addPerson(
         account,
         refObj.name,
@@ -51,12 +49,10 @@ export const addPerson = refObj => {
         hash1,
         hash2
       );
-
       console.log("refugee: ", refugee);
-      console.log("XXXXXX: OK");
-
-      //dispatch(push(`/addnew`));
       dispatch(showPreloader(false));
+      dispatch(getAllUsers());
+      dispatch(push("/search"));
     } catch (error) {
       dispatch(showPreloader(false));
     }
@@ -66,16 +62,19 @@ export const addPerson = refObj => {
 export function transferIdentity(adminAddress, refugeeAddress, id) {
   console.log("******", adminAddress, refugeeAddress, id);
   return async dispatch => {
+    dispatch(showPreloader(true));
     try {
       let transfer = await Refugee.transferIdentityOwnership(
         adminAddress,
         refugeeAddress,
         id
       );
+      dispatch(showPreloader(false));
       dispatch(transferIdentitySuccess(transfer));
       //attest
       attestRefugee();
     } catch (err) {
+      dispatch(showPreloader(false));
       console.log("ERROR:", err);
     }
   };

@@ -147,7 +147,7 @@ export class AddNew extends Component {
                     <TextField
                       id="origin"
                       tabIndex={3}
-                      label="Orgin Location"
+                      label="Origin Location"
                       onChange={origin => this.setState({ origin })}
                       placeholder=""
                       type="text"
