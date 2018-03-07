@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Button, DialogContainer, List, ListItem } from 'react-md';
+import React from 'react';
+import { DialogContainer } from 'react-md';
 import PropTypes from "prop-types";
 import circle from "../assets/images/circle.png";
 
@@ -23,7 +23,9 @@ const Success = props => {
 }
 
 Success.propTypes = {
-    // redirectUserToSearch: PropTypes.func
+    onHide: PropTypes.func,
+    visible: PropTypes.string,
+    user: PropTypes.object,
 };
 
 export default Success;

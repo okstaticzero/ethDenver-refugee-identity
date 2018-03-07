@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Card, CardTitle } from 'react-md';
 import { NavLink } from 'react-router-dom';
+import { getAllRefugees } from "../app/AppActions.js";
 
 import './SearchResults.css';
 import 'material-design-icons/iconfont/material-icons.css';
@@ -13,10 +14,14 @@ export class SearchResults extends Component {
         super(props);
         this.createList = this.createList.bind(this);
     }
+    
+    componentDidMount() {
+        this.props.getAllRefugees();
+    }
 
     createList(data) {
         return data.filter(dataItem => {
-            if (dataItem.name.includes(this.props.searchParams) || dataItem.origin.includes(this.props.searchParams)) {
+            if (dataItem.name.toLowerCase().includes(this.props.searchParams.toLowerCase()) || dataItem.origin.toLowerCase().includes(this.props.searchParams.toLowerCase())) {
                 return dataItem
             } 
             }).map((person, index) => {
@@ -26,7 +31,7 @@ export class SearchResults extends Component {
                             <CardTitle title={person.name} subtitle={person.origin} />
                         </Card>
                     </NavLink>
-            })
+            });
     }
 
     render() {
@@ -35,7 +40,7 @@ export class SearchResults extends Component {
                 <Card>
                     <CardTitle 
                         className="searchResults-card"
-                        title={`${this.props.allRefugees.length} Matches`} />
+                        title={`${this.createList(this.props.allRefugees).length} Matches`} />
                     {
                         this.createList(this.props.allRefugees)
                     }
@@ -48,6 +53,7 @@ export class SearchResults extends Component {
 
 SearchResults.propTypes = {
     dispatch: PropTypes.func,
+    getAllRefugees: PropTypes.func,
     allRefugees: PropTypes.array,
     searchParams: PropTypes.string,
 };
@@ -59,4 +65,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps)(SearchResults));
+export default withRouter(connect(mapStateToProps, { getAllRefugees })(SearchResults));

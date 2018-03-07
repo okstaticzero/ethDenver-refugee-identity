@@ -5,9 +5,6 @@ import AddNew from "../AddNew/AddNew";
 import { profileView } from "./ProfileActions.js";
 
 export class ProfileContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.profileView(this.props.match.params);
