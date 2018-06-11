@@ -3,6 +3,8 @@
 This repo is our submission for the ethDenver Hackathon.
 RefugeID is a decentralized platform for storing the identity, documentation, and movement of displaced individuals around the world.
 
+[Medium Article covering EthDenver and RefugeeID](https://medium.com/amentum/ethdenver-creating-social-impact-through-community-technology-e74dba2610fe)
+
 #### Tools used:
 
 `React` (Based on Create-react-app: https://github.com/facebookincubator/create-react-app)
